@@ -23,6 +23,10 @@ public class NodeRestResource {
         return nodeService.findNodeById(nodeId);
     }
 
+    @GetMapping("childNodes/{nodeId}")
+    public Collection<Node> childNodes(@PathVariable("nodeId") String nodeId) {
+        return nodeService.childNodesOfNode(nodeId);
+    }
 
     @GetMapping("/all")
     public Collection<Node> allNodes() {

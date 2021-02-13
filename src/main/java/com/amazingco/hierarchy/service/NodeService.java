@@ -8,9 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -44,5 +43,14 @@ public class NodeService {
     public Collection<NodeEntity> allNodes() {
         return nodeRepository.findAll();
     }
+
+    @Transactional
+    public Collection<Node> childNodesOfNode(String nodeId) {
+        Collection<NodeEntity> nodeEntityCollection = nodeRepository.findAllByParentNodeId(UUID.fromString(nodeId));
+        return nodeEntityCollection.stream()
+                .map(Node::fromEntity)
+                .collect(Collectors.toSet());
+    }
+
 
 }
