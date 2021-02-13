@@ -1,21 +1,26 @@
 # Getting Started
 
-### Reference Documentation
-For further reference, please consider the following sections:
+### Documentation
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.4.2/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.4.2/maven-plugin/reference/html/#build-image)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.4.2/reference/htmlsingle/#boot-features-developing-web-applications)
-* [Rest Repositories](https://docs.spring.io/spring-boot/docs/2.4.2/reference/htmlsingle/#howto-use-exposing-spring-data-repositories-rest-endpoint)
+We in Amazing Co need to model how our company is structured so we can do awesome stuff.We have a root node (only one) and several
+children nodes, each one with its own children as well. It's a tree-based structure. Something like:
 
-### Guides
-The following guides illustrate how to use some features concretely:
+``` 
+  root
+  /  \
+ a    b
+ |
+ c
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
-* [Accessing JPA Data with REST](https://spring.io/guides/gs/accessing-data-rest/)
-* [Accessing Neo4j Data with REST](https://spring.io/guides/gs/accessing-neo4j-data-rest/)
-* [Accessing MongoDB Data with REST](https://spring.io/guides/gs/accessing-mongodb-data-rest/)
+```
 
+* We need two HTTP APIs that will serve the two basic operations:
+* Get all descendant nodes of a given node (the given node can be anyone in the tree structure).
+* Change the parent node of a given node (the given node can be anyone in the tree structure).
+
+They need to answer quickly, even with tons of nodes. Also, we can't afford to lose this information, so some sort of persistence is required.
+Each node should have the following info:
+* node identification
+* who is the parent node
+* who is the root node
+* the height of the node. In the above example, height(root) = 0 and height(a) == 1.
