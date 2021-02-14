@@ -57,3 +57,13 @@ GET {host}:{port}/{nodeId}/children
 ```
 curl -X GET http://localhost:8080/e049a9e9-fc16-4d79-9ce2-0e32b641230e/children 
 ```
+
+Build Docker image
+```shell script
+docker build -t springio/gs-spring-boot-docker .  
+```
+
+```shell script
+ docker run -e "SPRING_PROFILES_ACTIVE=prod" -p 8080:8080 -t springio/gs-spring-boot-docker
+
+```
