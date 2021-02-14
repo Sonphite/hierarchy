@@ -30,31 +30,31 @@ Each node should have the following info:
 
 Create a node for a specified parentNode
 POST {host}:{port}/create?parentNodeId={targetParentNodeId}
-```
+```shell script
 curl -X POST 'http://localhost:8080/create?parentNodeId=100e3d76-ba8d-4c17-8349-d020e6c07182' -H 'content-type: application/json'
 ```
 
 Get all nodes
 GET {host}:{port}/all
-```  
+```shell script
 curl -X GET http://localhost:8080/all   
 ```
 
 Update parent of a node to new parent 
 PUT {host}:{port}/nodeId/targetParentNodeId
-```
+```shell script
 curl -X PUT http://localhost:8080/81000d5b-4de1-475b-8242-d9cb4acdd616/31ba6e6c-8559-4ca9-a4f8-e3b77395abef/ 
 ```
 
 GET info for a node
 GET {host}:{port}/{nodeId}
-```
+```shell script
 curl -X GET http://localhost:8080/fbaf4341-43aa-4e92-b5b3-4900c1824d0d 
 ```
 
 Get descendants of node
 GET {host}:{port}/{nodeId}/children
-```
+```shell script
 curl -X GET http://localhost:8080/e049a9e9-fc16-4d79-9ce2-0e32b641230e/children 
 ```
 
