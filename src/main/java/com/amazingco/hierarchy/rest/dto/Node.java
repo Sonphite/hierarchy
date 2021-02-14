@@ -14,6 +14,7 @@ public class Node {
     String uuid;
     int height;
     Node parentNode;
+    String rootNodeId;
     Collection<String> childNodeIds;
 
     public static Node fromEntity(NodeEntity nodeEntity) {
@@ -22,6 +23,7 @@ public class Node {
                 .parentNode(Optional.ofNullable(nodeEntity.getParentNode())
                         .map(Node::fromEntity)
                         .orElse(null))
+                .rootNodeId(nodeEntity.rootNode().getUuid().toString())
                 .height(nodeHeight(nodeEntity))
                 .childNodeIds(nodeEntity.getChildNodes().stream().map(NodeEntity::getUuidAsString).collect(Collectors.toSet()))
                 .build();
