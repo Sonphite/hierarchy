@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableJpaRepositories
-@EnableAutoConfiguration
 @ImportAutoConfiguration(InjectedConfig.class)
 public class HierarchyNodesApplication {
 
