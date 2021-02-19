@@ -12,8 +12,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity
 @NamedQueries({
-        @NamedQuery(name="NodeEntity.findAllByParentNodeId", query = " select ne from NodeEntity ne where ne.parentNode.uuid = :uuid"),
-        @NamedQuery(name = "NodeEntity.updateParentNode", query = " update NodeEntity set parentNode = :parentNode where uuid = :uuid")
+        @NamedQuery(name = NodeEntity.FIND_BY_PARENT_NODE_ID, query = " select ne from NodeEntity ne where ne.parentNode.uuid = :uuid"),
+        @NamedQuery(name = NodeEntity.UPDATE_PARENT_NODE_ID, query = " update NodeEntity set parentNode = :parentNode where uuid = :uuid")
 })
 public class NodeEntity {
     final static String FIND_BY_PARENT_NODE_ID = "NodeEntity.findAllByParentNodeId";
